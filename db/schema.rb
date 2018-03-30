@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180329234838) do
+ActiveRecord::Schema.define(version: 20180330223748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20180329234838) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "playlist_songs", force: :cascade do |t|
+    t.bigint "playlist_id"
+    t.bigint "song_id"
+    t.index ["playlist_id"], name: "index_playlist_songs_on_playlist_id"
+    t.index ["song_id"], name: "index_playlist_songs_on_song_id"
+  end
+
   create_table "playlists", force: :cascade do |t|
     t.string "name"
   end
@@ -30,6 +37,15 @@ ActiveRecord::Schema.define(version: 20180329234838) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "album_id"
+    t.index ["album_id"], name: "index_songs_on_album_id"
+  end
+
+  create_table "user_playlists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "playlist_id"
+    t.index ["playlist_id"], name: "index_user_playlists_on_playlist_id"
+    t.index ["user_id"], name: "index_user_playlists_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,6 +53,12 @@ ActiveRecord::Schema.define(version: 20180329234838) do
     t.boolean "is_admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
+  add_foreign_key "playlist_songs", "playlists"
+  add_foreign_key "playlist_songs", "songs"
+  add_foreign_key "songs", "albums"
+  add_foreign_key "user_playlists", "playlists"
+  add_foreign_key "user_playlists", "users"
 end
