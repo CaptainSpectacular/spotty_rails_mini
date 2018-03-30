@@ -9,13 +9,13 @@ RSpec.describe User, type: :model do
     end
 
     it 'must have a password' do
-      user = User.create(name: 'Bennet Foddley')
+      user = User.create(username: 'Bennet Foddley')
 
       expect(user).to_not be_valid
     end
 
     it 'is valid with all attributes' do
-      user = User.create(name: 'Bennet Foddley', password: 'password123')
+      user = User.create(username: 'Bennet Foddley', password: 'password123')
 
       expect(user).to be_valid
     end
@@ -23,13 +23,13 @@ RSpec.describe User, type: :model do
 
   describe 'traits' do
     it 'is not an admin by default' do
-      user = User.create(name: 'Bennet Foddley', password: 'password123')
+      user = User.create(username: 'Bennet Foddley', password: 'password123')
 
       expect(user.is_admin).to eq(false)
     end
 
     it 'can be an admin' do
-      user = User.create(name: 'Bennet Foddley', password: 'password123', is_admin: true)
+      user = User.create(username: 'Bennet Foddley', password: 'password123', is_admin: true)
 
       expect(user.is_admin).to eq(true)
     end
@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
     it 'can have many playlists' do
       playlist1 = Playlist.create(name: 'Road')
       playlist2 = Playlist.create(name: 'Workout')
-      user = User.create(name: 'Bennet Foddley', password: 'password123')
+      user = User.create(username: 'Bennet Foddley', password: 'password123')
 
       user.playlists << playlist1
       user.playlists << playlist2
