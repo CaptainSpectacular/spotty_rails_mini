@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Playlist, type: :model do
   describe 'validations' do
     it 'must have a name' do
-      user = User.create(name: 'Bennet Foddley')
+      user = User.create(name: 'Bennet Foddley', password: 'password123')
       playlist = user.playlists.new()
 
       expect(playlist).to_not be_valid
@@ -17,7 +17,7 @@ RSpec.describe Playlist, type: :model do
     end
 
     it 'is valid with all attributes' do
-      user = User.create(name: 'Bennet Foddley')
+      user = User.create(name: 'Bennet Foddley', password: 'password123')
       playlist = user.playlists.create(name: 'Road')
 
 
@@ -39,9 +39,9 @@ RSpec.describe Playlist, type: :model do
 
     it 'has many users' do
       playlist = Playlist.create(name: 'Road')
-      user1 = User.create(name: 'Bennet Foddley')
-      user2 = User.create(name: 'Nobunaga')
-      user3 = User.create(name: 'Phinks')
+      user1 = User.create(name: 'Bennet Foddley', password: 'password123')
+      user2 = User.create(name: 'Nobunaga', password: 'password123')
+      user3 = User.create(name: 'Phinks', password: 'password123')
 
 
       user1.playlists << playlist
