@@ -8,6 +8,12 @@ RSpec.describe User, type: :model do
       expect(user).to_not be_valid
     end
 
+    it 'must have a password' do
+      user = User.create(name: 'Bennet Foddley')
+
+      expect(user).to_not be_valid
+    end
+
     it 'is valid with all attributes' do
       user = User.create(name: 'Bennet Foddley', password: 'password123')
 
@@ -17,7 +23,7 @@ RSpec.describe User, type: :model do
 
   describe 'traits' do
     it 'is not an admin by default' do
-      user = User.create(name: 'Bennet Foddley')
+      user = User.create(name: 'Bennet Foddley', password: 'password123')
 
       expect(user.is_admin).to eq(false)
     end
