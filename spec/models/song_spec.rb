@@ -24,7 +24,7 @@ RSpec.describe Song, type: :model do
   end
 
   describe 'relationships' do
-    xit 'belongs to album' do
+    it 'belongs to album' do
       album = Album.new(name:'spaceloung')
       song = album.songs.new(name: 'all star')
 
