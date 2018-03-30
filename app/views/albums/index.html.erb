@@ -1,4 +1,8 @@
 <% albums.each do |album| %>
-  <%= album.name %>
-  <br>
+
+  <%= image_tag('/assets/default_album.jpg', class: "album_image") %>
+
+  <div class="album_info">
+    <%= album.name %>
+  </div>
 <% end %>
