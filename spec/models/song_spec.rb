@@ -9,7 +9,7 @@ RSpec.describe Song, type: :model do
       expect(song).to_not be_valid
     end
 
-    it 'must have an album' do
+    it 'must have an albums' do
       song = Song.new(name: 'all star')
 
       expect(song).to_not be_valid
@@ -24,7 +24,7 @@ RSpec.describe Song, type: :model do
   end
 
   describe 'relationships' do
-    it 'belongs to album' do
+    it 'belongs to albums' do
       album = Album.new(name:'spaceloung')
       song = album.songs.new(name: 'all star')
 
