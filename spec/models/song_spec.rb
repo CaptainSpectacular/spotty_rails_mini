@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe Song, type: :model do
   describe 'validations' do
     it 'must have a name' do
-      song = Song.new()
+      album = Album.create(name: 'spacelounge')
+      song = Song.new(album_id: album.id)
 
       expect(song).to_not be_valid
     end
@@ -15,14 +16,15 @@ RSpec.describe Song, type: :model do
     end
 
     it 'is valid with all attributes' do
-      song = Song.new(name: 'all star')
+      album = Album.create(name: 'spacelounge')
+      song = Song.new(name: 'all star', album_id: album.id)
 
       expect(song).to be_valid
     end
   end
 
   describe 'relationships' do
-    it 'belongs to album' do
+    xit 'belongs to album' do
       album = Album.new(name:'spaceloung')
       song = album.songs.new(name: 'all star')
 
@@ -30,15 +32,28 @@ RSpec.describe Song, type: :model do
     end
 
     it 'has many playlists' do
-      playlist1 = Playlist.new(name: 'Road')
-      playlist2 = Playlist.new(name: 'Lounge')
-      song = Song.new(name: 'all star')
+      album = Album.create(name: 'spacelounge')
+      playlist1 = Playlist.create(name: 'Road')
+      playlist2 = Playlist.create(name: 'Lounge')
+      song = Song.create(name: 'all star', album_id: album.id)
 
-      playlist1 << song
-      playlist << song
+      playlist1.songs << song
+      playlist2.songs << song
 
       expect(song).to respond_to(:playlists)
-      expect(song.playlists).to eq(playlist1, playlist2)
+      expect(song.playlists.first.name).to eq(playlist1.name)
+    end
+  end
+
+  describe 'uniqueness' do
+    it 'cannot have duplicate songs' do
+      album1 = Album.create(name: 'spacelounge')
+      album2 = Album.create(name: 'space_lounge')
+      Song.create(name: 'all star', album_id: album1.id)
+      Song.create(name: 'all star', album_id: album1.id)
+      Song.create(name: 'all star', album_id: album2.id)
+
+      expect(Song.all.size).to eq(3)
     end
   end
 end
