@@ -21,22 +21,43 @@ body {
   color: white;
 }
 
-.login-header{
+.navbar-nav{
+  text-align: center;
+  border: 1px solid white;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.navbar-link{
+  color: #d6d6d6;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 40px;
+}
+
+.navbar-link:hover{
+  color: white;
+}
+
+
+
+
+.header{
   text-align: center;
 }
 
-.login-form {
+.form {
   padding-left: 33%;
   padding-right: 33%;
   text-align: center;
   margin-bottom: 50px;
 }
 
-.login-area{
+.form-area{
   color: black;
 }
 
-.login-info {
+.form-info {
   width: 100%;
   margin-top: 5px;
 }
@@ -52,4 +73,10 @@ body {
   float: left;
   color: white;
   margin-top: 25px;
+}
+
+.signup-btn {
+  color: black;
+  margin-top: 8px;
+  width: 100%;
 }
