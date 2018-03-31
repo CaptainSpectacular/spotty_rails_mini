@@ -1,11 +1,29 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
-<%= form_for(:session, url: login_path) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<div class="container" %>
+  <h1 class="login-header">Login</h1>
+</div>
+<div class="container">
+  <%= form_for(:session, url: login_path) do |f| %>
+    <div class="login-form">
+      <div class="login-area">
+          <%= f.label :username, class: 'hidden' %>
+          <%= f.text_field :username, placeholder: 'Username', class: 'login-info' %>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <div class="login-area">
+        <div class="login-info">
+          <%= f.label :password, class: 'hidden' %>
+          <%= f.password_field :password, placeholder: 'Password', class: 'login-info' %>
+        </div>
+      </div>
 
-  <%= f.submit 'Login' %>
-<% end %>
+      <div class="login-area">
+        <% f.label :remember, class: 'hidden' %>
+        <div class="remember"><%= f.check_box :remember %> Remember me</div>
+      </div>
+
+      <div class="login-area">
+        <%= f.submit 'Login', class: 'login-button btn'%>
+      </div>
+    </div>
+  <% end %>
+</div>
