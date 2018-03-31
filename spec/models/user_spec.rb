@@ -49,4 +49,14 @@ RSpec.describe User, type: :model do
       expect(user.playlists.last.name).to eq(playlist2.name)
     end
   end
+
+  describe 'class methods' do
+    it 'can authenticate' do
+      user = User.create(username: 'lluthor', password: 'password123')
+
+      expect(user.authenticate(user.password)).to eq(user)
+      expect(user.authenticate('secret')).to eq(false)
+
+    end
+  end
 end
