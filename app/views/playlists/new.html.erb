@@ -1,0 +1,13 @@
+
+<h1 class="page-header header">Make a Playlist</h1>
+
+<div class="form">
+  <%= form_for [current_user, playlist] do |f| %>
+    <div class="form-area">
+      <%= f.label :name, class: 'hidden' %>
+      <%= f.text_field :name, placeholder: 'Name', class: 'form-info' %>
+    </div>
+
+    <%= f.submit class: 'btn create-btn' %>
+  <% end %>
+</div>

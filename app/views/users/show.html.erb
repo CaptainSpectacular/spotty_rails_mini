@@ -1,5 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
-<p>
-  Welcome <%= current_user.username %>
-</p>
+
+<h1 class="page-header header">
+  <%= current_user.username %>'s Profile
+</h1>
+
+<div class="links">
+  <%= link_to 'New Playlist', new_user_playlist_path(current_user), class: 'nav' %>
+  <%= link_to 'My Playlists', "#{current_user.id}/playlists", class: 'nav' %>
+  <%= link_to 'Logout', logout_path, method: :delete, class: 'nav' %>
+</div>
