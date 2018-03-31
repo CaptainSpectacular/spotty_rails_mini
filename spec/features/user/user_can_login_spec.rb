@@ -51,7 +51,7 @@ context 'the client' do
   context 'does not have an account' do
     context 'they visit the login page' do
       scenario 'they create an account with valid info' do
-        visit new_user_path
+        visit sign_up_path
 
         fill_in 'user[username]', with: 'TheRealIanDouglas'
         fill_in 'user[password]', with: 'supermutt'
@@ -63,14 +63,14 @@ context 'the client' do
       end
 
       scenario 'they cannot make an account with non-matching passwords' do
-        visit new_user_path
+        visit sign_up_path
 
         fill_in 'user[username]', with: 'TheRealIanDouglas'
         fill_in 'user[password]', with: 'supermutt'
         fill_in 'user[confirm_password]', with: 'Supermutt'
         click_on 'Create Account'
 
-        expect(current_path).to eq(new_user_path)
+        expect(current_path).to eq(sign_up_path)
         expect(page).to have_content('Passwords do not match')
       end
 
@@ -83,14 +83,14 @@ context 'the client' do
         fill_in 'user[confirm_password]', with: 'supermutt'
         click_on 'Create Account'
 
-        expect(current_path).to eq(new_user_path)
+        expect(current_path).to eq(sign_up_path)
         expect(page).to have_content('Username already taken!')
       end
     end
   end
 
   scenario 'the nav bar has a sign in / sign up link' do
-    visit root
+    visit root_path
 
     expect(page).to have_content('Login')
     expect(page).to have_content('Sign Up')
