@@ -3,3 +3,5 @@
 <p>
   Welcome <%= current_user.username %>
 </p>
+
+<%= link_to 'Logout', logout_path, method: :delete %>
