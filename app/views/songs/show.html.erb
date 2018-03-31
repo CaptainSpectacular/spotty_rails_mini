@@ -1,2 +1,8 @@
-<%= song.name %>
-<%= song.album.name %>
+
+<h1 class="page-header header">
+  <%= song.name %>
+</h1>
+
+<div class="links">
+  Album: <%= link_to song.album.name, album_path(song.album), class: 'nav' %>
+</div>

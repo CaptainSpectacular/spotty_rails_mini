@@ -1,4 +1,9 @@
+<h1 class="page-header header">
+  <%= album.name %>
+</h1>
+
 <% album.songs.each do |song| %>
-  <%= song.name %>
-  <br>
+  <div class="links">
+    <%= link_to song.name, song_path(song), class: 'nav' %>
+  </div>
 <% end %>

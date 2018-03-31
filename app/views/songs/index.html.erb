@@ -1,4 +1,6 @@
-<% songs.each do |song| %>
-  <%= song.name %>
-  <br>
-<% end %>
+
+<div class="links">
+  <% songs.each do |song| %>
+    <%= link_to song.name, song_path(song), class: 'nav' %>
+  <% end %>
+</div>

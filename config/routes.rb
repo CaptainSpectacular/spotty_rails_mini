@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'playlists/show'
+
+  get 'playlists/index'
+
   root to: 'sessions#new'
 
   get 'users/show'
@@ -13,7 +17,9 @@ Rails.application.routes.draw do
 
   resources :albums
   resources :songs
-  resources :users, exclude: %i[create new]
+  resources :users, exclude: %i[create new] do
+    resources :playlists
+  end
 
   get '/sign_up',   to: 'users#new'
   post '/sign_up',  to: 'users#create'
