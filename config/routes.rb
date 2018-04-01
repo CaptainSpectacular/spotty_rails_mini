@@ -1,19 +1,6 @@
 Rails.application.routes.draw do
-
-  get 'playlists/show'
-
-  get 'playlists/index'
-
   root to: 'sessions#new'
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/edit'
-
-  get 'sessions/new'
-
+  
   patch '/add', to: 'playlists#update'
 
   resources :albums
