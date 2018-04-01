@@ -9,12 +9,7 @@
   <%= link_to song.album.name, album_path(song.album), class: 'nav' %>
 
   <% if current_user %>
-    <%= form_for(:playlist, url: "/add", method: :patch) do |f| %>
-      <%= f.select(:id, current_user.playlists.map{ |n| [n.name, n.id] }, class: 'playlist-dropdown') %>
-      <%= f.label :song_id, class: 'hidden' %>
-      <%= f.text_field :song_id, value: song.id, class: 'hidden' %>
-      <%= f.submit 'Add to Playlist', class: 'add-to-playlist-button btn' %>
-    <% end %>
+    <%= render partial: 'plist_form', locals: { song: song } %>
   <% end %>
 
 </div>

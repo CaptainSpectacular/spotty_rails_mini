@@ -1,6 +1,7 @@
 
 <div class="links">
   <% songs.each do |song| %>
-    <%= link_to song.name, song_path(song), class: 'nav' %>
+    <%= link_to song.name, song_path(song), class: 'nav song' %>
+    <%= render partial: 'plist_form', locals: { song: song } %>
   <% end %>
 </div>

@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   root to: 'sessions#new'
-  
-  patch '/add', to: 'playlists#update'
 
   resources :albums
   resources :songs
@@ -14,4 +12,5 @@ Rails.application.routes.draw do
   get '/login',     to: 'sessions#new'
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  patch '/add', to: 'playlists#update'
 end
