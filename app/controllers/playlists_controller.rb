@@ -22,9 +22,16 @@ class PlaylistsController < ApplicationController
     end
   end
 
+  def update
+    playlist = Playlist.find(params[:playlist][:id])
+    playlist.add_songs(params[:playlist][:song_id])
+
+    redirect_back(fallback_location: { action: 'show' })
+  end
+
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name)
+    params.require(:playlist).permit(:name, :songs)
   end
 end

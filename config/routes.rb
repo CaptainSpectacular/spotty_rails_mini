@@ -14,8 +14,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  post 'songs/:id/add', to: 'songs#show'
-
+  patch '/add', to: 'playlists#update'
 
   resources :albums
   resources :songs
