@@ -9,8 +9,8 @@
   Album: <%= link_to song.album.name, album_path(song.album), class: 'nav' %>
 
   <%= form_for(:playlist, url: "#{song.id}/add") do |f| %>
-    <%= f.select(:playlist, current_user.playlists.map{ |n| [n.name, n.id] }) %>
-    <%= f.submit 'Add to Playlist' %>
+    <%= f.select(:playlist, current_user.playlists.map{ |n| [n.name, n.id] }, class: 'playlist-dropdown') %>
+    <%= f.submit 'Add to Playlist', class: 'login-button btn' %>
   <% end %>
 
 </div>
