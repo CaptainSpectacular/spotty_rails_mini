@@ -24,7 +24,7 @@ class PlaylistsController < ApplicationController
 
   def update
     playlist = Playlist.find(params[:playlist][:id])
-    playlist.add_songs(params[:playlist][:song_id])
+    playlist.add_song(params[:playlist][:song_id])
 
     redirect_back(fallback_location: { action: 'show' })
   end
