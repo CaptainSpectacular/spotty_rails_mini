@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
+  post 'songs/:id/add', to: 'songs#show'
+
 
   resources :albums
   resources :songs

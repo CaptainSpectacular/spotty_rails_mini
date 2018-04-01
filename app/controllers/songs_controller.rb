@@ -4,6 +4,8 @@ class SongsController < ApplicationController
   end
 
   def show
+    binding.pry
+    Song.add_songs(params[:id], params[:playlist][:playlist]) if params[:playlist]
     render locals: { song: Song.find(params[:id]) }
   end
 end
