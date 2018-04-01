@@ -15,7 +15,7 @@ class PlaylistsController < ApplicationController
     playlist = Playlist.new(playlist_params)
     if playlist.save
       current_user.playlists << playlist
-      redirect_to user_playlists_path(current_user.id)
+      redirect_to user_playlist_path(current_user.id, playlist)
     else
       flash.now[:danger] = 'Something went wrong. Try making the playlist again'
       render 'new'

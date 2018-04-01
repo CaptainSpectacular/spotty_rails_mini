@@ -3,6 +3,8 @@
   <%= song.name %>
 </h1>
 
+
 <div class="links">
   Album: <%= link_to song.album.name, album_path(song.album), class: 'nav' %>
+  <%= link_to 'Add to Playlist',
 </div>
