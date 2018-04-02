@@ -29,6 +29,12 @@ class PlaylistsController < ApplicationController
     redirect_back(fallback_location: { action: 'show' })
   end
 
+  def destroy
+    Playlist.destroy(params[:id])
+
+    redirect_to user_playlists_path(current_user)
+  end
+
   private
 
   def playlist_params
