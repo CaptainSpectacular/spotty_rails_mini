@@ -8,4 +8,8 @@ class Playlist < ApplicationRecord
   def add_song(song_id)
     songs << Song.find(song_id)
   end
+
+  def remove_song(song_id)
+    playlist_songs.destroy(song_id)
+  end
 end

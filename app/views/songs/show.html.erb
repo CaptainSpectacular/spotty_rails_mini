@@ -9,7 +9,11 @@
   <%= link_to song.album.name, album_path(song.album), class: 'nav' %>
 
   <% if current_user %>
-    <%= render partial: 'plist_form', locals: { song: song } %>
+    <!--<%= render partial: 'plist_form', locals: { song: song } %>-->
+
+    <% current_user.playlists.each do |p_list| %>
+      <%=link_to p_list.name, add_path({song: song, playlist: p_list}), method: :patch, class: 'p-links' %>
+    <% end %>
   <% end %>
 
 </div>

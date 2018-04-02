@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   root to: 'sessions#new'
 
   resources :albums
-  resources :songs
-  resources :users, exclude: %i[create new] do
+  resources :songs, only: %i[index show] do
+    resources :playlist_songs, only: %i[create]
+  end
+  resources :users, exclude: %i[create] do
     resources :playlists
   end
 
@@ -12,5 +14,6 @@ Rails.application.routes.draw do
   get '/login',     to: 'sessions#new'
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  patch '/add',     to: 'playlists#update'
+  patch '/add',     to: 'playlist_songs#create'
+  delete '/remove', to: 'playlist_songs#destroy'
 end

@@ -4,5 +4,7 @@
 <%= link_to 'Delete', user_playlist_path(current_user, playlist), method: :delete %>
 
 <% playlist.songs.each do |song| %>
-  <%= song.name %>
+  <%= song.name %>'
+
+  <%= link_to 'Remove From Playlist', remove_path(playlist: playlist, song: song), method: :delete %>
 <% end %>
