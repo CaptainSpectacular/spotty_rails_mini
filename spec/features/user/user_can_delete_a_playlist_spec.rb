@@ -3,8 +3,6 @@ require 'rails_helper'
 context 'user has a playlist' do
   context 'they can delete it' do
     scenario 'from the show page' do
-      album = Album.create(name: 'spacelounge')
-      song = album.songs.create(name: 'all star')
       user = User.create(username: 'TheRealIanDouglas', password: 'supermutt')
       playlist = user.playlists.create(name: 'Road')
 
@@ -22,8 +20,6 @@ context 'user has a playlist' do
     end
 
     scenario 'from the index page' do
-      album = Album.create(name: 'spacelounge')
-      song = album.songs.create(name: 'all star')
       user = User.create(username: 'TheRealIanDouglas', password: 'supermutt')
       playlist = user.playlists.create(name: 'Road')
 
