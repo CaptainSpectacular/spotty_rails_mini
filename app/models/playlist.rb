@@ -10,6 +10,6 @@ class Playlist < ApplicationRecord
   end
 
   def remove_song(song_id)
-    playlist_songs.destroy(song_id)
+    songs.destroy(song_id)
   end
 end
