@@ -13,8 +13,8 @@ context 'the user is logged in' do
       fill_in 'session[password]', with: user.password
       click_on 'Login'
       click_on 'Songs'
-      click_link 'all star'
-      click_on playlist.name
+      click_link song.name
+      click_on 'Add to Playlist'
 
       expect(current_path).to eq(song_path(song))
 

@@ -6,5 +6,5 @@
 <% playlist.songs.each do |song| %>
   <%= song.name %>'
 
-  <%= link_to 'Remove From Playlist', remove_path(playlist: playlist, song: song), method: :delete %>
+  <%= link_to 'Remove From Playlist', playlist_song_path(song, { playlist: playlist }), method: :delete %>
 <% end %>

@@ -1,9 +1,11 @@
-<%= form_for(:playlist, url: "/add", method: :patch) do |f| %>
 
+
+
+<%= form_for(:playlist, url: playlist_songs_path, method: :post) do |f| %>
   <%= f.select(:id, current_user.playlists.map{ |n| [n.name, n.id] }, class: 'playlist-dropdown') %>
-
-  <%= f.label :song_id, class: 'hidden' %>
+  <%= f.label :song_id %>
   <%= f.text_field :song_id, value: song.id, class: 'hidden' %>
-
   <%= f.submit 'Add to Playlist', class: 'add-to-playlist-button btn' %>
 <% end %>
+
+
