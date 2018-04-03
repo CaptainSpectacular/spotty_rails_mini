@@ -1,8 +1,6 @@
-
-
 <% albums.each do |album| %>
   <div class="album">
-  <%= image_tag('/assets/default_album.jpg', class: 'album-image') %>
-  <%= link_to album.name, album_path(album), class: 'album-info' %>
+    <%= image_tag('/assets/default_album.jpg', class: 'album-image') %>
+    <%= link_to album.name, album_path(album), class: 'album-info' %>
   </div>
 <% end %>

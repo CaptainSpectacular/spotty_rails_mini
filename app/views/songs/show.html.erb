@@ -3,6 +3,13 @@
   <%= song.name %>
 </h1>
 
-<div class="links">
-  Album: <%= link_to song.album.name, album_path(song.album), class: 'nav' %>
+
+<div class="plist-links">
+
+  <%= link_to song.album.name, album_path(song.album), class: 'nav' %>
+
+  <% if current_user %>
+    <%= render partial: 'plist_form', locals: { song: song } %>
+  <% end %>
+
 </div>

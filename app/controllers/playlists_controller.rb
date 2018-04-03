@@ -15,16 +15,23 @@ class PlaylistsController < ApplicationController
     playlist = Playlist.new(playlist_params)
     if playlist.save
       current_user.playlists << playlist
-      redirect_to user_playlists_path(current_user.id)
+      redirect_to user_playlist_path(current_user.id, playlist)
     else
       flash.now[:danger] = 'Something went wrong. Try making the playlist again'
       render 'new'
     end
   end
 
+  def update
+    playlist = Playlist.find(params[:playlist][:id])
+    playlist.add_song(params[:playlist][:song_id])
+
+    redirect_back(fallback_location: { action: 'show' })
+  end
+
   private
 
   def playlist_params
-    params.require(:playlist).permit(:name)
+    params.require(:playlist).permit(:name, :songs)
   end
 end

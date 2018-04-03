@@ -4,4 +4,8 @@ class Playlist < ApplicationRecord
   has_many :songs, -> { distinct }, through: :playlist_songs
   has_many :user_playlists
   has_many :users, through: :user_playlists
+
+  def add_song(song_id)
+    songs << Song.find(song_id)
+  end
 end

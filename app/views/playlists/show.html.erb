@@ -1,3 +1,7 @@
 <h1>Playlists#show</h1>
 <p>Find me in app/views/playlists/show.html.erb</p>
 <%= playlist.name %>
+
+<% playlist.songs.each do |song| %>
+  <%= song.name %>
+<% end %>

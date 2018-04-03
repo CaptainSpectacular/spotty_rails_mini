@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'playlists/show'
-
-  get 'playlists/index'
-
   root to: 'sessions#new'
-
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/edit'
-
-  get 'sessions/new'
-
 
   resources :albums
   resources :songs
@@ -26,4 +12,5 @@ Rails.application.routes.draw do
   get '/login',     to: 'sessions#new'
   post '/login',    to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  patch '/add',     to: 'playlists#update'
 end
