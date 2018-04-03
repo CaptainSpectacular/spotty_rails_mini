@@ -17,4 +17,17 @@ context 'an admin' do
     expect(current_path).to eq(song_path(Song.last))
     expect(Song.all.size).to eq(1)
   end
+
+  scenario 'delete a song' do
+    album = Album.create(name: 'spacelounge')
+    song = album.songs.create(name: 'all star')
+
+    visit admin_song_path(song)
+
+    click_on 'Delete'
+
+    expect(current_path).to eq(songs_path)
+    expect(page).to_not have_content(song.name)
+    expect(Song.all.size).to eq(0)
+  end
 end

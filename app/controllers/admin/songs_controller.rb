@@ -1,7 +1,7 @@
 class Admin::SongsController < ApplicationController
 
-  def index
-
+  def show
+    render locals: { song: Song.find(params[:id]) }
   end
 
   def new
@@ -18,6 +18,12 @@ class Admin::SongsController < ApplicationController
       flash.now[:danger] = 'Invalid input. Try again'
       render 'new', locals: { album_options: Album.options }
     end
+  end
+
+  def destroy
+    Song.delete(params[:id])
+
+    redirect_to songs_path
   end
 
   private

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: %i[show index destroy]
-    resources :songs, only: %i[new create destroy]
+    resources :songs, only: %i[new create destroy show]
   end
 
 
