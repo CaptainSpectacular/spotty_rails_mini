@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  def show
+  def edit
     render locals: { user: User.find(params[:id]) }
   end
 

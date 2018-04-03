@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, only: %i[show index destroy]
+    resources :users, only: %i[index edit destroy update]
     resources :songs, only: %i[new create destroy show]
   end
 

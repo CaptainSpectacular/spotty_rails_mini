@@ -27,7 +27,7 @@ context 'an admin' do
     scenario 'they can see information and modification' do
       user = User.create(username: 'TheRealIanDouglas', password: 'supermut')
 
-      visit admin_user_path(user)
+      visit edit_admin_user_path(user)
 
       expect(page).to have_content(user.username)
       expect(page).to have_content(user.role)
