@@ -6,4 +6,9 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def options
+    names = playlists.pluck(:name)
+    ids = playlists.pluck(:id)
+    names.zip(ids)
+  end
 end

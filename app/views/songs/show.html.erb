@@ -9,7 +9,7 @@
   <%= link_to song.album.name, album_path(song.album), class: 'nav' %>
 
   <% if current_user %>
-    <%= render partial: 'plist_form', locals: { song: song } %>
+    <%= render partial: 'plist_form', locals: { song: song, options: playlist_options } %>
   <% end %>
 
 </div>
