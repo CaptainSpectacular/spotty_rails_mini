@@ -5,6 +5,7 @@ context 'user is snoopy' do
     @user = User.create(username: 'haxor', password: 'password')
     @target = User.create(username: 'victim', password: 'password')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+  #   Investigate why this ain't working
   end
 
   context 'they visit' do
