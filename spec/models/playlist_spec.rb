@@ -83,5 +83,16 @@ RSpec.describe Playlist, type: :model do
       expect(playlist.songs.size).to eq(1)
       expect(playlist.songs.first).to eq(song)
     end
+
+    it '.remove_song' do
+      playlist = Playlist.create(name: 'Road')
+      album = Album.create(name: 'spacelounge')
+      song = Song.create(name: 'On the Road Again', album_id: album.id)
+
+      playlist.songs << song
+      playlist.remove_song(song.id)
+
+      expect(playlist.songs.size).to eq(0)
+    end
   end
 end

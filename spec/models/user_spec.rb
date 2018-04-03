@@ -59,4 +59,14 @@ RSpec.describe User, type: :model do
 
     end
   end
+
+  describe 'instance methods' do
+    it '.playlist_options' do
+      user = User.create(username: 'lluthor', password: 'password123')
+      p1 = user.playlists.create(name: 'Road')
+      p2 =  user.playlists.create(name: 'Workout')
+
+      expect(user.options).to eq([[p1.name, p1.id], [p2.name, p2.id]])
+    end
+  end
 end
