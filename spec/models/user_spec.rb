@@ -25,13 +25,13 @@ RSpec.describe User, type: :model do
     it 'is not an admin by default' do
       user = User.create(username: 'Bennet Foddley', password: 'password123')
 
-      expect(user.is_admin).to eq(false)
+      expect(user.admin?).to be_falsey
     end
 
     it 'can be an admin' do
-      user = User.create(username: 'Bennet Foddley', password: 'password123', is_admin: true)
+      user = User.create(username: 'Bennet Foddley', password: 'password123', role: 1)
 
-      expect(user.is_admin).to eq(true)
+      expect(user.admin?).to be_truthy
     end
   end
 
@@ -55,8 +55,7 @@ RSpec.describe User, type: :model do
       user = User.create(username: 'lluthor', password: 'password123')
 
       expect(user.authenticate(user.password)).to eq(user)
-      expect(user.authenticate('secret')).to eq(false)
-
+      expect(user.authenticate('secret')).to be_falsey
     end
   end
 
@@ -64,7 +63,7 @@ RSpec.describe User, type: :model do
     it '.playlist_options' do
       user = User.create(username: 'lluthor', password: 'password123')
       p1 = user.playlists.create(name: 'Road')
-      p2 =  user.playlists.create(name: 'Workout')
+      p2 = user.playlists.create(name: 'Workout')
 
       expect(user.options).to eq([[p1.name, p1.id], [p2.name, p2.id]])
     end
