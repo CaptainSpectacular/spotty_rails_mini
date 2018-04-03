@@ -2,6 +2,8 @@ module SessionsHelper
 
   def log_in(user)
     session[:user_id] = user.id
+    flash[:success] = "Welcome #{current_user.username}"
+
   end
 
   def log_out

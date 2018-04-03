@@ -1,7 +1,10 @@
 <h1>Playlists#show</h1>
 <p>Find me in app/views/playlists/show.html.erb</p>
 <%= playlist.name %>
+<%= link_to 'Delete', user_playlist_path(current_user, playlist), method: :delete %>
 
 <% playlist.songs.each do |song| %>
-  <%= song.name %>
+  <%= song.name %>'
+
+  <%= link_to 'Remove From Playlist', playlist_song_path(song, { playlist: playlist }), method: :delete %>
 <% end %>

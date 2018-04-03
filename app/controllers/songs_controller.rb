@@ -1,9 +1,13 @@
 class SongsController < ApplicationController
   def index
-    render locals: { songs: Song.all }
+    playlist_options = current_user.options if current_user
+
+    render locals: { songs: Song.all, playlist_options: playlist_options }
   end
 
   def show
-    render locals: { song: Song.find(params[:id]) }
+    playlist_options = current_user.options if current_user
+
+    render locals: { song: Song.find(params[:id]), playlist_options: playlist_options }
   end
 end

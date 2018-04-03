@@ -23,10 +23,12 @@ class PlaylistsController < ApplicationController
   end
 
   def update
-    playlist = Playlist.find(params[:playlist][:id])
-    playlist.add_song(params[:playlist][:song_id])
+  end
 
-    redirect_back(fallback_location: { action: 'show' })
+  def destroy
+    Playlist.destroy(params[:id])
+
+    redirect_to user_playlists_path(current_user)
   end
 
   private

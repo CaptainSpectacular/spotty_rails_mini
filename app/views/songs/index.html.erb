@@ -3,7 +3,7 @@
   <% songs.each do |song| %>
     <%= link_to song.name, song_path(song), class: 'nav song' %>
     <div class="plist-links">
-    <%= render partial: 'plist_form', locals: { song: song } if current_user %>
+      <%= render partial: 'plist_form', locals: { song: song, options: playlist_options } if current_user %>
     </div>
   <% end %>
 </div>
