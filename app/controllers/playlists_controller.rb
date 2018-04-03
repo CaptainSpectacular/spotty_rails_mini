@@ -23,10 +23,6 @@ class PlaylistsController < ApplicationController
   end
 
   def update
-    binding.pry
-    playlist = Playlist.find(params[:playlist][:id])
-
-    redirect_back(fallback_location: { action: 'show' })
   end
 
   def destroy
