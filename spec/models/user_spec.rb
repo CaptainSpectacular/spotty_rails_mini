@@ -50,16 +50,15 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'class methods' do
+  describe 'instance methods' do
+
     it 'can authenticate' do
       user = User.create(username: 'lluthor', password: 'password123')
 
       expect(user.authenticate(user.password)).to eq(user)
       expect(user.authenticate('secret')).to be_falsey
     end
-  end
 
-  describe 'instance methods' do
     it '.playlist_options' do
       user = User.create(username: 'lluthor', password: 'password123')
       p1 = user.playlists.create(name: 'Road')

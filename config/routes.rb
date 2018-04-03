@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  namespace :admin do
+    resources :users, only: %i[show index]
+  end
+
   root to: 'sessions#new'
 
   resources :albums
