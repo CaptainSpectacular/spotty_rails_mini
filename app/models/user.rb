@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :password, presence: true
   has_many :user_playlists
   has_many :playlists, through: :user_playlists
+  enum role: %w[base admin]
 
   has_secure_password
 
