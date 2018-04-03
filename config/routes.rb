@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :users, only: %i[show index]
+    resources :users, only: %i[show index destroy]
   end
 
   root to: 'sessions#new'
