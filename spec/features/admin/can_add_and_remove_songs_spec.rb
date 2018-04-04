@@ -22,12 +22,26 @@ context 'an admin' do
     album = Album.create(name: 'spacelounge')
     song = album.songs.create(name: 'all star')
 
-    visit admin_song_path(song)
+    visit edit_admin_song_path(song)
 
     click_on 'Delete'
 
     expect(current_path).to eq(songs_path)
     expect(page).to_not have_content(song.name)
     expect(Song.all.size).to eq(0)
+  end
+
+  scenario 'edit a song' do
+    album = Album.create(name: 'spacelounge')
+    song = album.songs.create(name: 'all star')
+
+    visit edit_admin_song_path(song)
+
+    fill_in 'song[name]', with: 'ALLSTAR'
+    click_on 'Update'
+
+    expect(current_path).to eq(edit_admin_song_path(song))
+    expect(page).to have_content('ALLSTAR')
+    expect(page).to_not have_content('all star')
   end
 end

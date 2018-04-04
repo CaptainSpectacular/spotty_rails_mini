@@ -2,7 +2,7 @@
   Edit <%= album.name %>
 </h1>
 
-<%= form_for(album) do |f| %>
+<%= form_for(:album, url: admin_album_path(album), method: :patch) do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name, value: album.name %>
   <%= f.submit 'Update' %>

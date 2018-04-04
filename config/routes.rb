@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: %i[index edit destroy update]
-    resources :songs, only: %i[new create destroy show]
+    resources :songs, exclude: %i[index show]
     resources :albums, exclude: %i[index show]
   end
 

@@ -1,10 +1,15 @@
 require 'rails_helper'
 
 context 'an admin can' do
-  scenario 'create albums' do
-    admin = User.create(username: 'admin', password: 'admin', role: 1)
-    allow_any_instance_of(Admin::BaseController).to receive(:current_user).and_return(admin)
+  before(:each) do
+    @admin = User.create(username: 'admin', password: 'admin', role: 1)
+    visit login_path
+    fill_in 'session[username]', with: @admin.username
+    fill_in 'session[password]', with: @admin.password
+    click_on 'Login'
+  end
 
+  scenario 'create albums' do
     visit new_admin_album_path
 
     fill_in 'album[name]', with: 'spacelounge'
@@ -16,9 +21,7 @@ context 'an admin can' do
   end
 
   scenario 'delete albums' do
-    admin = User.create(username: 'admin', password: 'admin', role: 1)
     album = Album.create(name: 'spacelounge')
-    allow_any_instance_of(Admin::BaseController).to receive(:current_user).and_return(admin)
     visit edit_admin_album_path(album)
 
     click_on 'Delete'
@@ -27,13 +30,15 @@ context 'an admin can' do
     expect(page).to_not have_content(album.name)
     expect(Album.all.size).to eq(0)
   end
-
+  
   scenario 'edit an album' do
-    admin = User.create(username: 'admin', password: 'admin', role: 1)
     album = Album.create(name: 'spacelounge')
-    allow_any_instance_of(Admin::BaseController).to receive(:current_user).and_return(admin)
-    visit edit_admin_album_path(album)
 
+    visit edit_admin_album_path(album)
     fill_in 'album[name]', with: 'Best Of...'
+    click_on 'Update'
+
+    expect(current_path).to eq(edit_admin_album_path(album))
+    expect(page).to have_content('Best Of...')
   end
 end

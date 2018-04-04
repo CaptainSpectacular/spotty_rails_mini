@@ -1,7 +1,19 @@
-class Admin::SongsController < ApplicationController
+class Admin::SongsController < Admin::BaseController
 
-  def show
-    render locals: { song: Song.find(params[:id]) }
+  def edit
+    render locals: { song: Song.find(params[:id]),
+                     album_options: Album.options }
+  end
+
+  def update
+    song = Song.find(params[:id])
+    if song.update(song_params)
+      flash[:success] = 'Song updated'
+      redirect_to edit_admin_song_path(song)
+    else
+      flash.now[:danger] = 'Invalid attributes'
+      redirect_to edit_admin_song_path(song)
+    end
   end
 
   def new

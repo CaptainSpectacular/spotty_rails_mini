@@ -1,4 +1,4 @@
-class Admin::AlbumsController < ApplicationController
+class Admin::AlbumsController < Admin::BaseController
 
   def new
   end
