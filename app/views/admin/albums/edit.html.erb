@@ -1,4 +1,11 @@
 <h1 class="page-header header">
   Edit <%= album.name %>
 </h1>
+
+<%= form_for(album) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, value: album.name %>
+  <%= f.submit 'Update' %>
+<% end %>
+
 <%= link_to 'Delete', admin_album_path(album), method: :delete %>

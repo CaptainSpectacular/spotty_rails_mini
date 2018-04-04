@@ -18,6 +18,17 @@ class Admin::AlbumsController < ApplicationController
     render locals: { album: Album.find(params[:id]) }
   end
 
+  def update
+    album = Album.find(params[:id])
+    if album.update(album_params)
+      redirect_to edit_admin_album_path(album)
+      flash[:success] = 'Successfully Updated'
+    else
+      render 'edit'
+      flash.now[:danger] = 'Invalid attributes'
+    end
+  end
+
   def destroy
     Album.destroy(params[:id])
 
