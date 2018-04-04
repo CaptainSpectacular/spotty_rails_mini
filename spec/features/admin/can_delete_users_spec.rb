@@ -5,6 +5,7 @@ context 'the admin' do
     @admin = User.create(username: 'admin', password: 'admin', role: 1)
     allow_any_instance_of(Admin::BaseController).to receive(:current_user).and_return(@admin)
   end
+
   scenario 'can delete a user' do
     user = User.create(username: 'TheRealIanDouglas', password: 'supermut')
 

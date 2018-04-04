@@ -1,0 +1,9 @@
+<h1 class="page-header header">
+  Create Album
+</h1>
+
+<%= form_for(:album, url: admin_albums_path) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

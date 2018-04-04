@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'albums/new'
+  end
+
+  namespace :admin do
+    get 'albums/edit'
+  end
+
   root to: 'sessions#new'
 
-  resources :albums
+  resources :albums, only: %i[index show]
 
   resources :songs, only: %i[index show]
 
@@ -12,6 +20,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: %i[index edit destroy update]
     resources :songs, only: %i[new create destroy show]
+    resources :albums, exclude: %i[index show]
   end
 
 
