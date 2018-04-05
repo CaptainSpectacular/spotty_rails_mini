@@ -6,22 +6,24 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"> </script>
   </head>
 
-  <body>
+  <body class="body">
 
   <header class="navbar-nav">
 
     <% unless current_user.nil? %>
       <%= link_to 'Albums', albums_path, class: 'navbar-link' %>
       <%= link_to 'Songs', songs_path, class: 'navbar-link' %>
-      <%= link_to 'Friends', users_path, class: 'navbar-link'  %>
+      <%= link_to 'Users', admin_users_path, class: 'navbar-link' if current_admin %>
       <%= link_to current_user.username, user_path(current_user), class: 'navbar-link'  %>
     <% end %>
 
     <% if current_user.nil? %>
-      <%= link_to 'Sign In', login_path %>
-      <%= link_to 'Sign Up', sign_up_path %>
+      <%= link_to 'Sign In', login_path, class: 'navbar-link' %>
+      <%= link_to 'Sign Up', sign_up_path, class: 'navbar-link' %>
     <% end %>
 
   </header>

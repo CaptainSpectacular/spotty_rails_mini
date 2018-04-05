@@ -1,6 +1,14 @@
+<h1 class="header page-header">
+  Albums
+</h1>
+
+<div class="admin-header">
+  <%= link_to 'Create Album', new_admin_album_path, class: 'admin-create' if current_admin %>
+</div>
 <% albums.each do |album| %>
   <div class="album">
     <%= image_tag('/assets/default_album.jpg', class: 'album-image') %>
     <%= link_to album.name, album_path(album), class: 'album-info' %>
+    <%= link_to 'Edit', edit_admin_album_path(album), class: 'nav admin-links' if current_admin %>
   </div>
 <% end %>

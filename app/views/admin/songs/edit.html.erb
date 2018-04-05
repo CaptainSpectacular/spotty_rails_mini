@@ -1,0 +1,12 @@
+<h1 class="page-header header">
+  Edit <%= song.name %>
+</h1>
+
+<%= form_for(:song, url: admin_song_path(song), method: :patch) do |f| %>
+  <%= f.select(:album_id, options_for_select(album_options), class: 'album-dropdown') %>
+  <%= f.label :name %>
+  <%= f.text_field :name, value: song.name %>
+  <%= f.submit 'Update' %>
+<% end %>
+
+<%= link_to 'Delete', admin_song_path(song), method: :delete %>

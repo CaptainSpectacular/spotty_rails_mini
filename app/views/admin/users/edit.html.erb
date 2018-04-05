@@ -1,0 +1,37 @@
+<h1 class="header page-header">
+  Edit <%= user.username %>
+</h1>
+
+<%= form_for(:user, url: admin_user_path(user), method: :patch) do |f| %>
+  <div class="form">
+    <div class="form-area">
+      <%= f.label :username %>
+      <%= f.text_field :username, value: user.username, class: 'form-info' %>
+    </div>
+
+  <div class="form-area">
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder: 'Password', class: 'form-info' %>
+  </div>
+
+  <div class="form-area">
+    <div class="text">
+      Role
+    </div>
+    <%= f.select :role, options_for_select([['base', 'base'], ['admin', 'admin']]), class: 'form-info' %>
+  </div>
+
+  <div class="form-area">
+    <%= f.submit 'Update', class: 'btn signup-btn' %>
+  </div>
+<% end %>
+
+<% unless user.admin? %>
+  <%= link_to 'Delete', admin_user_path(user), method: :delete, class: 'form-info' %>
+<% end %>
+
+<div class="user-info">
+  Created: <%= user.created_at %>
+  <br>
+  Last Updated: <%= user.updated_at %>
+</div>
