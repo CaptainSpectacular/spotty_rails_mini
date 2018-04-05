@@ -17,6 +17,7 @@
     <% unless current_user.nil? %>
       <%= link_to 'Albums', albums_path, class: 'navbar-link' %>
       <%= link_to 'Songs', songs_path, class: 'navbar-link' %>
+      <%= link_to 'Users', admin_users_path, class: 'navbar-link' if current_admin %>
       <%= link_to current_user.username, user_path(current_user), class: 'navbar-link'  %>
     <% end %>
 
