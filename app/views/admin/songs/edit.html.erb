@@ -2,11 +2,24 @@
   Edit <%= song.name %>
 </h1>
 
-<%= form_for(:song, url: admin_song_path(song), method: :patch) do |f| %>
-  <%= f.select(:album_id, options_for_select(album_options), class: 'album-dropdown') %>
-  <%= f.label :name %>
-  <%= f.text_field :name, value: song.name %>
-  <%= f.submit 'Update' %>
-<% end %>
+<div class="form">
+  <%= form_for(:song, url: admin_song_path(song), method: :patch) do |f| %>
+    Album:
+    <div class="form-area">
+      <%= f.select(:album_id, options_for_select(album_options), class: 'album-dropdown form-info') %>
+    </div>
 
-<%= link_to 'Delete', admin_song_path(song), method: :delete %>
+    <div class="form-area">
+      <%= f.label :name %>
+      <%= f.text_field :name, value: song.name, class: "form-info" %>
+    </div>
+
+    <div class="form-area">
+      <%= f.submit 'Update', class: "form-info" %>
+    </div>
+  <% end %>
+
+  <div class="form-area">
+    <%= button_to 'Delete', admin_song_path(song), method: :delete, class: "form-info" %>
+  </div>
+</div>

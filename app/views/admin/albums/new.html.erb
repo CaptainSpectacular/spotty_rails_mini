@@ -2,8 +2,16 @@
   Create Album
 </h1>
 
-<%= form_for(:album, url: admin_albums_path) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+
+<div class="form">
+  <%= form_for(:album, url: admin_albums_path) do |f| %>
+
+    <div class="form-area">
+      <%= f.text_field :name, placeholder: "name", class: "form-info" %>
+    </div>
+
+    <div class="form-area">
+      <%= f.submit class: "form-info" %>
+    </div>
+  <% end %>
+</div>
