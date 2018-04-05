@@ -2,10 +2,19 @@
   Edit <%= album.name %>
 </h1>
 
-<%= form_for(:album, url: admin_album_path(album), method: :patch) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, value: album.name %>
-  <%= f.submit 'Update' %>
-<% end %>
 
-<%= link_to 'Delete', admin_album_path(album), method: :delete %>
+<div class="form">
+  <%= form_for(:album, url: admin_album_path(album), method: :patch) do |f| %>
+    <div class="form-area">
+      <%= f.text_field :name, value: album.name, placeholder: "name", class: "form-info" %>
+    </div>
+
+    <div class="form-area">
+      <%= f.submit 'Update', class: "form-info" %>
+    </div>
+  <% end %>
+
+  <div class=form-area>
+    <%= button_to 'Delete', admin_album_path(album), method: :delete, class: "form-info" %>
+  </div>
+</div>

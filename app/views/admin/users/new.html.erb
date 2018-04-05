@@ -5,12 +5,10 @@
 <%= form_for(:user, url: admin_users_path, method: :post) do |f| %>
   <div class="form">
     <div class="form-area">
-      <%= f.label :username %>
       <%= f.text_field :username, placeholder: 'Username', class: 'form-info' %>
     </div>
 
   <div class="form-area">
-    <%= f.label :password %>
     <%= f.password_field :password, placeholder: 'Password', class: 'form-info' %>
   </div>
 

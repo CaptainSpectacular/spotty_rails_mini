@@ -1,8 +1,19 @@
 <h1 class="page-header header">Create Song</h1>
 
+<div class="form">
 <%= form_for(:song, url: admin_songs_path) do |f| %>
-  <%= f.select(:album_id, options_for_select(album_options), class: 'album-dropdown') %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
-<% end %>
+    Album:
+    <div class="form-area">
+      <%= f.select(:album_id, options_for_select(album_options), class: 'album-dropdown form-info') %>
+    </div>
+
+    <div class="form-area">
+      <%= f.label :name %>
+      <%= f.text_field :name, placeholder: "Name", class: "form-info" %>
+    </div>
+
+    <div class="form-area">
+      <%= f.submit 'Save Song', class: "form-info" %>
+    </div>
+  <% end %>
+</div>
