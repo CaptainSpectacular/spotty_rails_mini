@@ -1,10 +1,13 @@
-<h1>Playlists#show</h1>
-<p>Find me in app/views/playlists/show.html.erb</p>
-<%= playlist.name %>
-<%= link_to 'Delete', user_playlist_path(current_user, playlist), method: :delete %>
+<h1 class="header page-header">
+  <%= playlist.name %>
+</h1>
 
-<% playlist.songs.each do |song| %>
-  <%= song.name %>'
 
-  <%= link_to 'Remove From Playlist', playlist_song_path(song, { playlist: playlist }), method: :delete %>
-<% end %>
+<div class="links">
+  <%= button_to 'Delete This Playlist', user_playlist_path(current_user, playlist), method: :delete, class: 'plist-btn btn' %>
+
+    <% playlist.songs.each do |song| %>
+      <%= song.name %>
+      <%= link_to 'Remove From Playlist', playlist_song_path(song, { playlist: playlist }), method: :delete, class: 'plist-delete' %>
+  <% end %>
+</div>

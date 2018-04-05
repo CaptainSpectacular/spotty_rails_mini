@@ -1,6 +1,10 @@
-<h1>Playlists#index</h1>
-<p>Find me in app/views/playlists/index.html.erb</p>
-<% playlists.each do |playlist| %>
-  <%= link_to playlist.name, user_playlist_path(current_user, playlist) %>
-  <%= link_to 'Delete', user_playlist_path(current_user, playlist), method: :delete %>
-<% end %>
+<h1 class="header page-header">
+  My Playlists
+</h1>
+
+<div class="links">
+  <% playlists.each do |playlist| %>
+    <%= link_to playlist.name, user_playlist_path(current_user, playlist), class: 'nav' %>
+    <%= button_to 'Delete', user_playlist_path(current_user, playlist), method: :delete, class:'plist-btn btn' %>
+  <% end %>
+</div>
