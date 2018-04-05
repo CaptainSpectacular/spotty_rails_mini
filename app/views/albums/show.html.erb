@@ -2,8 +2,17 @@
   <%= album.name %>
 </h1>
 
+<div class="album-show">
+  <%= image_tag('/assets/default_album.jpg', class: 'album-image') %>
+</div>
+
+<h1 class="header">
+  Tracks
+</h3>
+
 <% album.songs.each do |song| %>
   <div class="links">
     <%= link_to song.name, song_path(song), class: 'nav' %>
   </div>
 <% end %>
+

@@ -23,7 +23,7 @@ context 'an admin' do
     end
   end
 
-  context 'visits a user show page' do
+  context 'visits a user edit page' do
     scenario 'they can see information and modification' do
       user = User.create(username: 'TheRealIanDouglas', password: 'supermut')
 
@@ -33,7 +33,6 @@ context 'an admin' do
       expect(page).to have_content(user.role)
       expect(page).to have_content(user.created_at)
       expect(page).to have_content('Delete')
-      expect(page).to have_content('Promote')
     end
   end
 end

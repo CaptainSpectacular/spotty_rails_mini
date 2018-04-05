@@ -6,5 +6,6 @@
 <div class="links">
   <%= link_to 'New Playlist', new_user_playlist_path(current_user), class: 'nav' %>
   <%= link_to 'My Playlists', "#{current_user.id}/playlists", class: 'nav' %>
+  <%= link_to 'Manage Users', admin_users_path, class: 'nav' if current_admin %>
   <%= link_to 'Logout', logout_path, method: :delete, class: 'nav' %>
 </div>
