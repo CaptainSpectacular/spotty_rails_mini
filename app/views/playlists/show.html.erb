@@ -7,7 +7,9 @@
   <%= button_to 'Delete This Playlist', user_playlist_path(current_user, playlist), method: :delete, class: 'plist-btn btn' %>
 
     <% playlist.songs.each do |song| %>
-      <%= song.name %>
+      <div class="plist-song">
+        <%= song.name %>
+      </div>
       <%= link_to 'Remove From Playlist', playlist_song_path(song, { playlist: playlist }), method: :delete, class: 'plist-delete' %>
   <% end %>
 </div>
