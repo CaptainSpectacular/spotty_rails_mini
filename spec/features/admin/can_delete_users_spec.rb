@@ -44,6 +44,7 @@ context 'the admin' do
     expect(current_path).to eq(edit_admin_user_path(updated))
     expect(page).to have_content(updated.username)
     expect(updated.password).to_not eq(user.password)
+    expect(updated.role).to eq('admin')
   end
 
   scenario 'cannot delete or demote other admins' do
